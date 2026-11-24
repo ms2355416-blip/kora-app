@@ -1,0 +1,21 @@
+name: Unpack project
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unpack
+        run: |
+          ZIP=$(ls *.zip | head -1)
+          unzip -q "$ZIP" -d /tmp/x
+          rm -f AndroidManifest.xml ic_launcher.png strings.xml themes.xml
+          rsync -a --exclude='.github' /tmp/x/kora-android/ ./
+          rm -f "$ZIP"
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Unpack project"
+          git push
