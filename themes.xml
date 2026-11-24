@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.Kora" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">#080D0B</item>
+        <item name="android:statusBarColor">#080D0B</item>
+        <item name="android:navigationBarColor">#080D0B</item>
+    </style>
+</resources>
