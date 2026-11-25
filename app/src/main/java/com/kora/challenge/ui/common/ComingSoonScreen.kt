@@ -22,7 +22,8 @@ fun ComingSoonScreen(gameId: String, onBack: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(game?.emoji ?: "⚽", fontSize = 64.sp)
+        KIcon(game?.icon ?: com.kora.challenge.R.drawable.ic_ball, 72.dp,
+            tint = if (game?.tintIcon == false) null else MaterialTheme.colorScheme.primary)
         Spacer(Modifier.height(12.dp))
         Text(game?.title ?: "لعبة", fontSize = 24.sp, fontWeight = FontWeight.Bold)
         Spacer(Modifier.height(8.dp))
